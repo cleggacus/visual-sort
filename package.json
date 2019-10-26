@@ -4,7 +4,7 @@
     "build": "rollup -c && tsc"
   },
   "version": "1.0.0",
-  "description": "express server for sort visualizer",
+  "description": "sort visualizer",
   "main": "index.js",
   "author": "cleggacus",
   "license": "MIT",

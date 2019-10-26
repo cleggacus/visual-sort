@@ -1,0 +1,18 @@
+{
+  "name": "visual-sort",
+  "scripts": {
+    "build": "rollup -c && tsc"
+  },
+  "version": "1.0.0",
+  "description": "express server for sort visualizer",
+  "main": "index.js",
+  "author": "cleggacus",
+  "license": "MIT",
+  "dependencies": {
+    "rollup": "^1.25.2",
+    "rollup-plugin-terser": "^5.1.2",
+    "rollup-plugin-typescript": "^1.0.1",
+    "tslib": "^1.10.0",
+    "typescript": "^3.6.4"
+  }
+}

@@ -13,12 +13,10 @@ const SortTypes = {
 
 class Sort{
     arr: [];
-    staged: boolean;
     delay: number;
 
-    constructor(arr, staged = false, delay = 0){
+    constructor(arr, delay = 0){
         this.arr = arr;
-        this.staged = staged;
         this.delay = delay;
     }
 
@@ -139,17 +137,6 @@ class Sort{
         arr[i+1] = key;
 
         this.recursiveInsertionSort(arr, n + 1);
-    }
-
-    async heapSort(arr){
-        for(let i = Math.round(arr.lengh) / 2 - 1; i >= 0; i--){
-            this.heap(arr, arr.length, i);
-        }
-
-    }
-
-    async heap(arr, low, high){
-
     }
     
     async quickSort(arr, low, high){

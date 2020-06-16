@@ -1,11 +1,9 @@
 import {Sort, SortTypes} from './sort'; 
-import {sleep} from './utils';
 
 let canvas = null;
 let ctx = null;
 
 let itemSum = 0;
-let delay = 0;
 let bgColor = "#000";
 
 let vals = [];
@@ -13,7 +11,9 @@ let sortTags = [];
 
 let gradient = false;
 
-function draw(){
+let draw = () => {
+    requestAnimationFrame(draw);
+
     ctx.fillStyle = bgColor;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -74,8 +74,7 @@ function draw(){
     }
 }
 
-function getQueryVariable(variable)
-{
+let getQueryVariable = (variable) => {
        var query = window.location.search.substring(1);
        var vars = query.split("&");
        for (var i=0;i<vars.length;i++) {
@@ -85,14 +84,14 @@ function getQueryVariable(variable)
        return('false');
 }
 
-function init(){
+let init = () => {
 
     itemSum = parseInt(getQueryVariable('len')) || 100;
     gradient = getQueryVariable('gradient') == "true" ? true : false;
 
     canvas = document.getElementById("visual");
     var newVals = Array.from({length: itemSum}, () => Math.random());
-    vals = Array.from({length: 6}, () => new Sort([...newVals], true));
+    vals = Array.from({length: 6}, () => new Sort([...newVals]));
 
     if (canvas.getContext('2d')) {
         ctx = canvas.getContext('2d');
@@ -117,14 +116,7 @@ function init(){
         console.error("canvas not surported");
     }
 
-    drawUpdate();
-}
-
-async function drawUpdate(){
-    while(true){
-        await sleep(delay);
-        draw();
-    }
+    requestAnimationFrame(draw);
 }
 
 init();
